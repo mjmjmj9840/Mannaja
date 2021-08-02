@@ -1,5 +1,6 @@
 package com.gmagma.mannaja.model;
 
+import com.gmagma.mannaja.dto.GroupRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,5 +34,17 @@ public class Group extends Timestamped {
     public void addMember(Member member) {
         members.add(member);
         member.setGroup(this);
+    }
+
+    public Group(GroupRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.link = requestDto.getLink();
+        this.leaderId = requestDto.getLeaderId();
+    }
+
+    public void update(GroupRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.link = requestDto.getLink();
+        this.leaderId = requestDto.getLeaderId();
     }
 }

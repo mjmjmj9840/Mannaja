@@ -55,7 +55,7 @@ public class GroupMemberTest {
         // when
         memberRepository.save(member1);
         memberRepository.save(member2);
-        Member result = memberRepository.findByNickname("Kim");
+        Member result = memberRepository.findByNickname("Kim").get();
 
         // then
         assertThat(result.getId()).isEqualTo(member1.getId());
@@ -92,8 +92,8 @@ public class GroupMemberTest {
         // when
         groupRepository.save(group1);
         groupRepository.save(group2);
-        Group result1 = groupRepository.findByName("group1");
-        Group result2 = groupRepository.findByLink("bbbbbb");
+        Group result1 = groupRepository.findByName("group1").get();
+        Group result2 = groupRepository.findByLink("bbbbbb").get();
 
         // then
         assertThat(result1.getName()).isEqualTo(group1.getName());
@@ -115,7 +115,7 @@ public class GroupMemberTest {
         memberRepository.save(member);
 
         // when
-        Group g_result = groupRepository.findByLink("aaaaaa");
+        Group g_result = groupRepository.findByLink("aaaaaa").get();
         g_result.setLeaderId(member.getId());
         g_result.addMember(member);
 

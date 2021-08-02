@@ -1,5 +1,6 @@
 package com.gmagma.mannaja.model;
 
+import com.gmagma.mannaja.dto.MemberRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,4 +25,14 @@ public class Member extends Timestamped {
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
+
+    public Member(MemberRequestDto requestDto) {
+        this.nickname = requestDto.getNickname();
+        this.password = requestDto.getPassword();
+    }
+
+    public void update(MemberRequestDto requestDto) {
+        this.nickname = requestDto.getNickname();
+        this.password = requestDto.getPassword();
+    }
 }
