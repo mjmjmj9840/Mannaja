@@ -1,4 +1,4 @@
-package com.gmagma.mannaja;
+package com.gmagma.mannaja.model;
 
 import com.gmagma.mannaja.model.Group;
 import com.gmagma.mannaja.model.Member;
@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
@@ -25,6 +24,7 @@ public class GroupMemberTest {
     @Autowired
     private GroupRepository groupRepository;
 
+    @Transactional
     @Test
     public void saveMember() {
         // given
@@ -40,6 +40,7 @@ public class GroupMemberTest {
         assertThat(result.getPassword()).isEqualTo(member.getPassword());
     }
 
+    @Transactional
     @Test
     public void findMember() {
         // given
@@ -60,6 +61,7 @@ public class GroupMemberTest {
         assertThat(result.getId()).isEqualTo(member1.getId());
     }
 
+    @Transactional
     @Test
     public void saveGroup() {
         // given
@@ -75,6 +77,7 @@ public class GroupMemberTest {
         System.out.println(result.getLeaderId());  // null
     }
 
+    @Transactional
     @Test
     public void findGroup() {
         // given
