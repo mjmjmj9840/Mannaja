@@ -1,13 +1,67 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #beaee2;
+  width: 100%;
+  height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+div {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+#create_link_wrap {
+  margin: 0 15%;
+  width: auto;
+}
+
+#create_link_wrap #title_wrap {
+  display: inline-block;
+  width: 60%;
+  text-align: right;
+}
+
+#create_link_wrap #title_wrap p {
+  color: #ffffff;
+  text-align: right;
+  padding: 5px;
+}
+
+#create_link_wrap #title_wrap #title {
+  font-size: 100px;
+  font-weight: bold;
+}
+
+#create_link_wrap #title_wrap #title_explanation {
+  font-size: 30px;
+}
+
+#create_link_wrap #title_wrap #explanation {
+  font-size: 20px;
+}
+
+#create_link_wrap #title_wrap input {
+  padding: 7px;
+  margin: 5px;
+  width: 60%;
+}
+
+#create_link_wrap #title_wrap button {
+  width: 150px;
+  height: 30px;
+  margin: 5px;
+}
+
+#image_wrap {
+  display: inline-block;
+  width: 30%;
+  height: 500px;
+  background-color: #696969;
 }
