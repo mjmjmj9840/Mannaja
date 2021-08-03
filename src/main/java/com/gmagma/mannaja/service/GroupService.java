@@ -28,7 +28,7 @@ public class GroupService {
 
     // 신규 그룹 생성
     @Transactional
-    public Long createGroup(GroupMemberRequestDto requestDto) {
+    public String createGroup(GroupMemberRequestDto requestDto) {
         // 그룹장 생성
         String nickname = requestDto.getNickname();
         String password = requestDto.getPassword();
@@ -50,7 +50,7 @@ public class GroupService {
         group.addMember(member);
         groupRepository.save(group);
 
-        return group.getId();
+        return group.getLink();  // 그룹 링크 반환
     }
 
     // 랜덤 링크 생성
