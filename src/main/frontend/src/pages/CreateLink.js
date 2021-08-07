@@ -1,21 +1,54 @@
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
+
 function CreateLink() {
   return (
-    <div id="create_link_wrap">
-      <div id="title_wrap">
-        <p id="title">만나자며👀</p>
-        <p id="title_explanation">만날 시간과 장소를 한 번에 정해보세요😊</p>
-        <p id="explanation">
+    <div id="create_link_wrap" className="flex text_white">
+      <div id="title_wrap" className="items">
+        <p className="text_100px">만나자며👀</p>
+        <p className="text_30px">만날 시간과 장소를 한 번에 정해보세요😊</p>
+        <p className="text_20px">
           아래에 그룹명과 닉네임을 입력하고 링크를 생성해 시작할 수 있습니다
         </p>
-        <input type="text" placeholder="그룹명"></input>
+        <input
+          name="group_name"
+          type="text"
+          placeholder="그룹명"
+          maxLength="10"
+        />
         <br />
-        <input type="text" placeholder="닉네임"></input>
+        <input
+          name="nickname"
+          type="text"
+          placeholder="닉네임"
+          maxLength="10"
+        />
         <br />
-        <button>링크생성</button>
+        <input
+          name="password"
+          type="password"
+          placeholder="비밀번호(숫자 4자리)"
+          maxLength="4"
+        />
+        <br />
+        <button id="create_link_btn">링크 생성</button>
       </div>
-      <div id="image_wrap"></div>
+      <div id="image_wrap" className="items">
+        <img src="/images/phone_txt.png" />
+      </div>
     </div>
   );
+}
+
+function GoSelectProfile() {
+  if (ValidationCheck()) {
+    // TODO : 입력값 넘겨주기
+  }
+}
+
+function ValidationCheck() {
+  // TODO : 입력값 validation check
+  return true;
 }
 
 export default CreateLink;

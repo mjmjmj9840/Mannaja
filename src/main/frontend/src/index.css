@@ -1,4 +1,11 @@
-body {
+@font-face {
+  font-family: "godoM";
+  src: url("./font/GodoM.otf");
+}
+
+html,
+body,
+div {
   background-color: #beaee2;
   width: 100%;
   height: 100%;
@@ -6,62 +13,132 @@ body {
 
 div {
   display: block;
-  width: 100%;
-  height: 100%;
+}
+
+p,
+span,
+div,
+body {
   padding: 0;
   margin: 0;
 }
 
-p {
-  padding: 0;
-  margin: 0;
+button {
+  width: 150px;
+  height: 40px;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #696969;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-#create_link_wrap {
-  margin: 0 15%;
+button:hover {
+  border: 1px solid #696969;
+  background-color: #dbdbdb;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.items {
+  align-self: center;
+  height: auto;
+}
+
+.flex_column {
+  flex-direction: column;
   width: auto;
 }
 
-#create_link_wrap #title_wrap {
-  display: inline-block;
-  width: 60%;
-  text-align: right;
-}
-
-#create_link_wrap #title_wrap p {
-  color: #ffffff;
-  text-align: right;
-  padding: 5px;
-}
-
-#create_link_wrap #title_wrap #title {
+.text_100px {
   font-size: 100px;
   font-weight: bold;
 }
 
-#create_link_wrap #title_wrap #title_explanation {
+.text_30px {
   font-size: 30px;
 }
 
-#create_link_wrap #title_wrap #explanation {
+.text_20px {
   font-size: 20px;
 }
 
-#create_link_wrap #title_wrap input {
+.text_white {
+  color: #ffffff;
+}
+
+input {
+  width: 100%;
+  max-width: 500px;
+  font-size: 15px;
   padding: 7px;
   margin: 5px;
-  width: 60%;
+  text-align: left;
 }
 
-#create_link_wrap #title_wrap button {
-  width: 150px;
-  height: 30px;
-  margin: 5px;
+#create_link_wrap div {
+  padding: 20px;
 }
 
-#image_wrap {
+#create_link_wrap #title_wrap {
+  text-align: right;
+}
+
+#create_link_wrap #title_wrap p {
+  text-align: right;
+  padding: 5px;
+}
+
+#create_link_wrap #image_wrap {
+  text-align: left;
+  width: 70%;
+}
+
+#created_link_wrap #link_wrap {
+  margin-top: 20px;
+}
+
+#created_link_wrap .icon_wrap {
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+#created_link_wrap .icon_wrap .icon {
+  width: 25px;
+  height: 25px;
+  max-width: 25px;
+  max-height: 25px;
+}
+
+#created_link_wrap .icon_wrap span {
+  color: #ffffff;
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+#select_profile_wrap #nickname_wrap {
+  margin-top: 10px;
+}
+
+#select_profile_wrap #nickname_wrap .nickname {
+  padding: 5px;
+  color: #2b2b2b;
+  font-size: 20px;
   display: inline-block;
-  width: 30%;
-  height: 500px;
-  background-color: #696969;
+}
+
+#select_profile_wrap #nickname_wrap .nickname:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#select_profile_wrap #create_profile_btn {
+  width: 300px;
+  margin-top: 20px;
 }
