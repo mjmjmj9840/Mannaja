@@ -7,27 +7,25 @@ import {
   CreateProfile,
 } from "../pages";
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <Route path="/createLink" component={CreateLink} />
-        <Route path="/createdLink" component={CreatedLink} />
-        <Route path="/:group_link/user/login" component={SelectProfile} />
-        <Route path="/:group_link/user/signup" component={CreateProfile} />
+const App = () => {
+  return (
+    <>
+      <Route path="/createLink" component={CreateLink} />
+      <Route path="/createdLink" component={CreatedLink} />
+      <Route path="/:group_link/user/login" component={SelectProfile} />
+      <Route path="/:group_link/user/signup" component={CreateProfile} />
 
-        {/* Switch : component의 중복 출력 방지 */}
-        {/*
+      {/* Switch : component의 중복 출력 방지 */}
+      {/*
         <Switch>
           <Route path="/:group_link/user/login" component={SelectProfile} />
           <Route path="/user/login" component={SelectProfile} />
         </Switch>
         */}
-        {/* Redirect : Redirect 할 path */}
-        {/* <Redirect from='/' to='/' /> */}
-      </>
-    );
-  }
-}
+      {/* Redirect : Redirect 할 path */}
+      {/* <Redirect from='/' to='/' /> */}
+    </>
+  );
+};
 
 export default App;
