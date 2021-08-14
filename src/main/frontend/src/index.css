@@ -1,6 +1,23 @@
 @font-face {
-  font-family: "godoM";
-  src: url("./font/GodoM.otf");
+  font-family: "ELAND_Choice_B";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_B.woff")
+    format("woff");
+}
+
+@font-face {
+  font-family: "ELAND_Choice_M";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff")
+    format("woff");
+}
+
+@font-face {
+  font-family: "ELAND_Choice_L";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_L.woff")
+    format("woff");
+}
+
+* {
+  font-family: "ELAND_Choice_L";
 }
 
 html,
@@ -23,6 +40,16 @@ body {
   margin: 0;
 }
 
+input {
+  width: 100%;
+  max-width: 500px;
+  font-size: 15px;
+  padding: 7px;
+  margin: 5px;
+  text-align: left;
+  border: 1px solid #696969;
+}
+
 button {
   width: 150px;
   height: 40px;
@@ -30,14 +57,17 @@ button {
   padding: 5px;
   border: 1px solid #696969;
   background-color: #f9f9f9;
+  color: #000000;
   border-radius: 10px;
   font-size: 15px;
   cursor: pointer;
+  font-family: "ELAND_Choice_M";
 }
 
 button:hover {
   border: 1px solid #696969;
-  background-color: #dbdbdb;
+  background-color: #696969;
+  color: #ffffff;
 }
 
 .flex {
@@ -58,7 +88,6 @@ button:hover {
 
 .text_100px {
   font-size: 100px;
-  font-weight: bold;
 }
 
 .text_30px {
@@ -73,13 +102,16 @@ button:hover {
   color: #ffffff;
 }
 
-input {
-  width: 100%;
-  max-width: 500px;
-  font-size: 15px;
-  padding: 7px;
-  margin: 5px;
-  text-align: left;
+.text_bold {
+  font-family: "ELAND_Choice_B";
+}
+
+.text_boldM {
+  font-family: "ELAND_Choice_M";
+}
+
+#profile_text {
+  margin: 20px 0;
 }
 
 #create_link_wrap div {
@@ -138,7 +170,7 @@ input {
   cursor: pointer;
 }
 
-#select_profile_wrap #create_profile_btn {
+#create_profile_btn {
   width: 300px;
   margin-top: 20px;
 }

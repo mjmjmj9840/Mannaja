@@ -1,9 +1,13 @@
-function CreateProfile(props) {
+import React from "react";
+
+const CreateProfile = () => {
   return (
     <div id="create_profile_wrap" className="flex text_white">
       <div className="items">
-        <p className="text_100px">안양 돼지파티</p>
-        <p className="text_30px">그룹에 참여할 프로필을 생성해주세요</p>
+        <p className="text_100px text_bold">안양 돼지파티</p>
+        <p className="text_30px text_boldM" id="profile_text">
+          그룹에 참여할 프로필을 생성해주세요.
+        </p>
         <input
           name="nickname"
           type="text"
@@ -22,6 +26,6 @@ function CreateProfile(props) {
       </div>
     </div>
   );
-}
+};
 
 export default CreateProfile;

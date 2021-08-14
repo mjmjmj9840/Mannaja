@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 
-function CreatedLink() {
+const CreatedLink = () => {
   return (
     <div id="created_link_wrap" className="flex text_white">
       <div className="items">
-        <p className="text_100px">안양 돼지파티</p>
+        <p className="text_100px text_bold">안양 돼지파티</p>
         <div id="link_wrap" className="flex">
           <input
             id="group_link"
@@ -29,6 +29,6 @@ function CreatedLink() {
       </div>
     </div>
   );
-}
+};
 
 export default CreatedLink;
