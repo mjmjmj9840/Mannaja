@@ -5,15 +5,24 @@ import com.gmagma.mannaja.service.GroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @CrossOrigin
 @RequiredArgsConstructor
 @RestController
 public class GroupController {
     private final GroupService groupService;
 
-    @PostMapping("/CreateLink")
-    public String createLink(@RequestBody GroupMemberRequestDto requestDto) {
-        String link = groupService.createGroup(requestDto);
-        return link;
+    @GetMapping("/test/create")
+    public HashMap create() {
+        HashMap result = new HashMap();
+        result.put("message", "제발 돼라!!!!!!!!!!!!!!!!!!!");
+
+        return result;
     }
+//    @PostMapping("/createLink")
+//    public String createLink(@RequestBody GroupMemberRequestDto requestDto) {
+//        String link = groupService.createGroup(requestDto);
+//        return link;
+//    }
 }

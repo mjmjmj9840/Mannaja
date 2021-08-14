@@ -5,11 +5,13 @@ import {
   CreatedLink,
   SelectProfile,
   CreateProfile,
+  TestCreate,
 } from "../pages";
 
 const App = () => {
   return (
     <>
+      <Route path="/TestCreate" component={TestCreate} />
       <Route path="/createLink" component={CreateLink} />
       <Route path="/createdLink" component={CreatedLink} />
       <Route path="/:group_link/user/login" component={SelectProfile} />

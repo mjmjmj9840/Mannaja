@@ -350,3 +350,7 @@ sketch
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,eclipse,visualstudiocode,java,react,node
+
+# my ignore
+src/main/frontend/build
+build/
