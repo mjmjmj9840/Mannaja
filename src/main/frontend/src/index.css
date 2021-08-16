@@ -40,6 +40,11 @@ body {
   margin: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 input {
   width: 100%;
   max-width: 500px;
@@ -68,6 +73,10 @@ button:hover {
   border: 1px solid #696969;
   background-color: #696969;
   color: #ffffff;
+}
+
+img {
+  margin: 0 auto;
 }
 
 .flex {
@@ -173,4 +182,21 @@ button:hover {
 #create_profile_btn {
   width: 300px;
   margin-top: 20px;
+}
+
+#group_main_wrap .items {
+  height: 100%;
+}
+
+#group_main_wrap .items:first-child {
+  width: 30%;
+}
+
+#group_main_wrap .items:last-child {
+  width: 70%;
+}
+
+#group_main_wrap #member_notice_wrap div {
+  flex-grow: 1;
+  max-width: 500px;
 }

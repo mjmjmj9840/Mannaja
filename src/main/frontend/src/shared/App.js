@@ -5,6 +5,7 @@ import {
   CreatedLink,
   SelectProfile,
   CreateProfile,
+  Main,
   TestCreate,
 } from "../pages";
 
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="/createdLink" component={CreatedLink} />
       <Route path="/:group_link/user/login" component={SelectProfile} />
       <Route path="/:group_link/user/signup" component={CreateProfile} />
+      <Route path="/:group_link/main" component={Main} />
 
       {/* Switch : component의 중복 출력 방지 */}
       {/*
