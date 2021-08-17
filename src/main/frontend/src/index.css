@@ -107,8 +107,16 @@ img {
   font-size: 20px;
 }
 
+.text_13px {
+  font-size: 13px;
+}
+
 .text_white {
   color: #ffffff;
+}
+
+.text_darkgray {
+  color: #2b2b2b;
 }
 
 .text_bold {
@@ -117,6 +125,10 @@ img {
 
 .text_boldM {
   font-family: "ELAND_Choice_M";
+}
+
+.text_underline {
+  text-decoration: underline;
 }
 
 #profile_text {
@@ -169,14 +181,13 @@ img {
 
 #select_profile_wrap #nickname_wrap .nickname {
   padding: 5px;
-  color: #2b2b2b;
   font-size: 20px;
   display: inline-block;
 }
 
 #select_profile_wrap #nickname_wrap .nickname:hover {
-  text-decoration: underline;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 #create_profile_btn {
@@ -186,17 +197,46 @@ img {
 
 #group_main_wrap .items {
   height: 100%;
+  text-align: left;
 }
 
 #group_main_wrap .items:first-child {
-  width: 30%;
+  width: 20%;
+  justify-content: space-around;
+  align-items: flex-end;
 }
 
 #group_main_wrap .items:last-child {
-  width: 70%;
+  width: 80%;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #group_main_wrap #member_notice_wrap div {
-  flex-grow: 1;
-  max-width: 500px;
+  width: 70%;
+  height: 45%;
+  border: 2px solid #ffffff;
+}
+
+#group_main_wrap #member_wrap {
+  overflow-y: scroll;
+}
+
+#group_main_wrap #member_wrap p {
+  padding: 10px;
+}
+
+#group_main_wrap #member_wrap .group_member {
+  padding: 5px 10px;
+}
+
+#group_main_wrap #member_wrap .group_reader {
+  white-space: break-spaces;
+}
+
+#group_main_wrap #meeting_wrap {
+  width: 90%;
+  height: 95%;
+  border: 2px solid #ffffff;
+  margin-left: 5%;
 }
