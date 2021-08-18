@@ -18,6 +18,19 @@
 
 * {
   font-family: "ELAND_Choice_L";
+  cursor: default;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #444444;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #beaee2;
 }
 
 html,
@@ -53,6 +66,7 @@ input {
   margin: 5px;
   text-align: left;
   border: 1px solid #696969;
+  cursor: text;
 }
 
 button {
@@ -107,16 +121,12 @@ img {
   font-size: 20px;
 }
 
-.text_13px {
-  font-size: 13px;
-}
-
 .text_white {
   color: #ffffff;
 }
 
-.text_darkgray {
-  color: #2b2b2b;
+.text_gray {
+  color: #444444;
 }
 
 .text_bold {
@@ -129,6 +139,10 @@ img {
 
 .text_underline {
   text-decoration: underline;
+}
+
+.text_center {
+  text-align: center;
 }
 
 #profile_text {
@@ -158,8 +172,12 @@ img {
 }
 
 #created_link_wrap .icon_wrap {
-  cursor: pointer;
   padding: 0 10px;
+}
+
+#created_link_wrap .icon_wrap,
+#created_link_wrap .icon_wrap > * {
+  cursor: pointer;
 }
 
 #created_link_wrap .icon_wrap .icon {
@@ -212,26 +230,71 @@ img {
   align-items: center;
 }
 
-#group_main_wrap #member_notice_wrap div {
+#group_main_wrap #member_notice_wrap > div {
   width: 70%;
   height: 45%;
   border: 2px solid #ffffff;
+  position: relative;
 }
 
-#group_main_wrap #member_wrap {
-  overflow-y: scroll;
-}
-
-#group_main_wrap #member_wrap p {
+#group_main_wrap p {
   padding: 10px;
 }
 
-#group_main_wrap #member_wrap .group_member {
-  padding: 5px 10px;
+#group_main_wrap #group_name,
+#notice_area {
+  height: 40px;
+  border-bottom: 2px solid #ffffff;
 }
 
-#group_main_wrap #member_wrap .group_reader {
+#group_main_wrap #member_wrap #group_member {
+  overflow-y: auto;
+  height: calc(100% - 42px);
+  position: absolute;
+  bottom: 0px;
+}
+
+#group_main_wrap #member_wrap .group_leader {
   white-space: break-spaces;
+}
+
+#group_main_wrap #member_wrap .group_leader > img {
+  width: 15px;
+  height: 15px;
+  margin: 5px 0 0 5px;
+}
+
+#group_main_wrap .notice_wrap {
+  overflow-y: auto;
+  height: calc(100% - 42px);
+  position: absolute;
+  bottom: 0px;
+}
+
+#group_main_wrap .notice {
+  border: 1px solid #ffffff;
+  width: 80%;
+  height: auto;
+  padding: 5px;
+  margin: 10px auto;
+}
+
+#group_main_wrap .notice,
+#group_main_wrap .notice > * {
+  cursor: pointer;
+}
+
+#group_main_wrap .notice:hover {
+  color: #ffffff;
+}
+
+#group_main_wrap .notice > p {
+  padding: 5px;
+  font-size: 12px;
+}
+
+#group_main_wrap .notice > p > span {
+  font-size: 10px;
 }
 
 #group_main_wrap #meeting_wrap {
