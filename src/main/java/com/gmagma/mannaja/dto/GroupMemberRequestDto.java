@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class GroupMemberRequestDto {
-    private String name;  // 그룹명
+    private String groupName;  // 그룹명
     private String nickname;  // 그룹장 닉네임
     private String password;  // 그룹장 패스워드
 }

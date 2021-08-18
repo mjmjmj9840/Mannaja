@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -28,7 +30,7 @@ public class GroupService {
 
     // 신규 그룹 생성
     @Transactional
-    public Long createGroup(GroupMemberRequestDto requestDto) {
+    public String createGroup(GroupMemberRequestDto requestDto) {
         // 그룹장 생성
         String nickname = requestDto.getNickname();
         String password = requestDto.getPassword();
@@ -43,21 +45,21 @@ public class GroupService {
         }
 
         // 신규 그룹 생성
-        String name = requestDto.getName();
+        String name = requestDto.getGroupName();
         Long leaderId = member.getId();
         GroupRequestDto groupRequestDto = new GroupRequestDto(name, link, leaderId);
         Group group = new Group(groupRequestDto);
         group.addMember(member);
         groupRepository.save(group);
 
-        return group.getId();  // 그룹 링크 반환
+        return group.getLink();  // 그룹 링크 반환
     }
 
     // 랜덤 링크 생성
     private String generateRandomStr() {
         int leftLimit = 48;  // 숫자 '0'
         int rightLimit = 122;  // 문자 'z'
-        int targetStringLength = 6;  // 6자리 링크 생성
+        int targetStringLength = 12;  // 12자리 링크 생성
         Random random = new Random();
 
         String generatedString = random.ints(leftLimit, rightLimit + 1)
@@ -80,23 +82,38 @@ public class GroupService {
 
     // 그룹 정보 변경
     @Transactional
-    public Long updateGroup(Long id, GroupRequestDto requestDto) {
-        Group group = groupRepository.findById(id).orElseThrow(
-                () -> new NullPointerException("해당 그룹 id가 존재하지 않습니다.")
+    public String updateGroup(String link, GroupRequestDto requestDto) {
+        Group group = groupRepository.findByLink(link).orElseThrow(
+                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
         );
 
         group.update(requestDto);
-        return id;
+        return "0000";
     }
 
     // 그룹 멤버 추가
     @Transactional
-    public Long addGroupMember(Long id, Member member) {
-        Group group = groupRepository.findById(id).orElseThrow(
-                () -> new NullPointerException("해당 그룹 id가 존재하지 않습니다.")
+    public String addGroupMember(String link, Member member) {
+        Group group = groupRepository.findByLink(link).orElseThrow(
+                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
         );
 
         group.addMember(member);
-        return id;
+        return "0000";
+    }
+
+    // 그룹 멤버 찾기
+    public List<String> findMembersByGroupLink(String link) {
+        Group group = groupRepository.findByLink(link).orElseThrow(
+                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
+        );
+
+        List<String> nicknames = new ArrayList<>();
+        List<Member> members = group.getMembers();
+        for (Member member: members) {
+            nicknames.add(member.getNickname());
+        }
+
+        return nicknames;
     }
 }

@@ -40,12 +40,12 @@ public class GroupServiceTest {
         GroupMemberRequestDto requestDto = new GroupMemberRequestDto(name, nickname, password);
 
         // when
-        Long saveId = groupService.createGroup(requestDto);
+        String saveLink = groupService.createGroup(requestDto);
 
         // then
-        Group findGroup = groupRepository.findById(saveId).get();
+        Group findGroup = groupRepository.findByLink(saveLink).get();
         Member findMember = memberRepository.findById(findGroup.getLeaderId()).get();
-        assertEquals(requestDto.getName(), findGroup.getName());
+        assertEquals(requestDto.getGroupName(), findGroup.getName());
         assertEquals(findMember.getNickname(), requestDto.getNickname());
     }
 
@@ -57,14 +57,14 @@ public class GroupServiceTest {
         String nickname = "Kim";
         String password = "1234";
         GroupMemberRequestDto groupMemberRequestDto = new GroupMemberRequestDto(name, nickname, password);
-        Long saveId = groupService.createGroup(groupMemberRequestDto);
+        String saveLink = groupService.createGroup(groupMemberRequestDto);
 
         String new_name = "group2";
-        Group group = groupRepository.findById(saveId).get();
+        Group group = groupRepository.findByLink(saveLink).get();
         GroupRequestDto groupRequestDto = new GroupRequestDto(new_name, group.getLink(), group.getLeaderId());
 
         // when
-        groupService.updateGroup(saveId, groupRequestDto);
+        groupService.updateGroup(saveLink, groupRequestDto);
 
         // then
         assertEquals(group.getName(), new_name);
@@ -78,17 +78,17 @@ public class GroupServiceTest {
         String nickname = "Kim";
         String password = "1234";
         GroupMemberRequestDto groupMemberRequestDto = new GroupMemberRequestDto(name, nickname, password);
-        Long saveId = groupService.createGroup(groupMemberRequestDto);
+        String saveLink = groupService.createGroup(groupMemberRequestDto);
 
         MemberRequestDto memberRequestDto = new MemberRequestDto("Han", "1111");
         Member member = new Member(memberRequestDto);
         memberRepository.save(member);
 
         // when
-        groupService.addGroupMember(saveId, member);
+        groupService.addGroupMember(saveLink, member);
 
         // then
-        Group group = groupRepository.findById(saveId).get();
+        Group group = groupRepository.findByLink(saveLink).get();
         if(!group.getMembers().contains(member)) {
             throw new Exception("그룹 멤버가 추가되지 않았습니다.");
         };

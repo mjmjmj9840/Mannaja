@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Setter
 @Getter
@@ -29,7 +29,7 @@ public class Group extends Timestamped {
     private Long leaderId;  // 그룹장 id
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
-    private Collection<Member> members = new ArrayList<Member>();
+    private List<Member> members = new ArrayList<Member>();
 
     public void addMember(Member member) {
         members.add(member);

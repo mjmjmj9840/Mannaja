@@ -6,18 +6,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @CrossOrigin
 @RequiredArgsConstructor
 @RestController
-public class GroupController {
+public class UserController {
     private final GroupService groupService;
 
-    @PostMapping("/createLink")
-    public HashMap createLink(@RequestBody GroupMemberRequestDto requestDto) {
-        String link = groupService.createGroup(requestDto);
+    @GetMapping("/user/login/{link}")
+    public HashMap createLink(@PathVariable String link) {
+        List<String> nicknames = groupService.findMembersByGroupLink(link);
+
         HashMap result = new HashMap();
-        result.put("groupLink", link);
+        result.put("nicknames", nicknames);
 
         return result;
     }
