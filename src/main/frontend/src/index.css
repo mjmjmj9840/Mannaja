@@ -121,6 +121,10 @@ img {
   font-size: 20px;
 }
 
+.text_15px {
+  font-size: 15px;
+}
+
 .text_white {
   color: #ffffff;
 }
@@ -143,6 +147,12 @@ img {
 
 .text_center {
   text-align: center;
+}
+
+.text_ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #profile_text {
@@ -199,7 +209,6 @@ img {
 
 #select_profile_wrap #nickname_wrap .nickname {
   padding: 5px;
-  font-size: 20px;
   display: inline-block;
 }
 
@@ -242,29 +251,31 @@ img {
 }
 
 #group_main_wrap #group_name,
-#notice_area {
+#group_main_wrap #notice_area,
+#group_main_wrap #meeting_area {
   height: 40px;
-  border-bottom: 2px solid #ffffff;
+  line-height: 40px;
+  border-bottom: 2px dotted #ffffff;
 }
 
-#group_main_wrap #member_wrap #group_member {
+#group_main_wrap #member_wrap {
   overflow-y: auto;
   height: calc(100% - 42px);
   position: absolute;
   bottom: 0px;
 }
 
-#group_main_wrap #member_wrap .group_leader {
+#group_main_wrap .group_leader {
   white-space: break-spaces;
 }
 
-#group_main_wrap #member_wrap .group_leader > img {
+#group_main_wrap .group_leader > img {
   width: 15px;
   height: 15px;
   margin: 5px 0 0 5px;
 }
 
-#group_main_wrap .notice_wrap {
+#group_main_wrap #notice_wrap {
   overflow-y: auto;
   height: calc(100% - 42px);
   position: absolute;
@@ -290,11 +301,10 @@ img {
 
 #group_main_wrap .notice > p {
   padding: 5px;
-  font-size: 12px;
 }
 
 #group_main_wrap .notice > p > span {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #group_main_wrap #meeting_wrap {
@@ -302,4 +312,37 @@ img {
   height: 95%;
   border: 2px solid #ffffff;
   margin-left: 5%;
+  position: relative;
+}
+
+#group_main_wrap #meetings_wrap {
+  overflow-y: auto;
+  height: calc(100% - 42px);
+  position: absolute;
+  bottom: 0px;
+}
+
+#group_main_wrap #meetings_wrap > p {
+  text-align: center;
+}
+
+#group_main_wrap .meeting {
+  border: 1px solid #ffffff;
+  width: 95%;
+  height: auto;
+  padding: 5px;
+  margin: 10px auto;
+}
+
+#group_main_wrap .meeting,
+#group_main_wrap .meeting > * {
+  cursor: pointer;
+}
+
+#group_main_wrap .meeting:hover {
+  color: #ffffff;
+}
+
+#group_main_wrap .meeting > p {
+  padding: 5px;
 }

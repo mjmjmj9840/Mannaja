@@ -8,7 +8,7 @@ const SelectProfile = () => {
         <p className="text_30px text_boldM" id="profile_text">
           그룹에 참여할 프로필을 선택해주세요.
         </p>
-        <div id="nickname_wrap" className="text_gray">
+        <div id="nickname_wrap" className="text_gray text_20px">
           <p className="nickname text_bold">돼지새끼삼형제</p>
           <br />
           <p className="nickname text_bold">마포구 불주먹</p>
