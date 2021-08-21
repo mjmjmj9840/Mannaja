@@ -42,27 +42,6 @@ public class GroupMemberTest {
 
     @Transactional
     @Test
-    public void findMember() {
-        // given
-        Member member1 = new Member();
-        member1.setNickname("Kim");
-        member1.setPassword("2134");
-
-        Member member2 = new Member();
-        member2.setNickname("Han");
-        member2.setPassword("1234");
-
-        // when
-        memberRepository.save(member1);
-        memberRepository.save(member2);
-        Member result = memberRepository.findByNickname("Kim").get();
-
-        // then
-        assertThat(result.getId()).isEqualTo(member1.getId());
-    }
-
-    @Transactional
-    @Test
     public void saveGroup() {
         // given
         Group group = new Group();
@@ -122,5 +101,29 @@ public class GroupMemberTest {
         // then
         assertThat(g_result).isEqualTo(member.getGroup());
         assertThat(g_result.getLeaderId()).isEqualTo(member.getId());
+    }
+
+    @Transactional
+    @Test
+    public void findMemberInGroup() {
+        // given
+        Group group = new Group();
+        group.setName("group1");
+        group.setLink("aaaaaa");
+        groupRepository.save(group);
+
+        Member member = new Member();
+        member.setNickname("Kim");
+        member.setPassword("1234");
+        memberRepository.save(member);
+
+        group.setLeaderId(member.getId());
+        group.addMember(member);
+
+        // when
+        Member result = memberRepository.findByGroupAndNickname(group, "Kim").get();
+
+        // then
+        assertThat(result).isEqualTo(member);
     }
 }

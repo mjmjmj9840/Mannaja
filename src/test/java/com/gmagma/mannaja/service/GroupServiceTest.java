@@ -48,49 +48,4 @@ public class GroupServiceTest {
         assertEquals(requestDto.getGroupName(), findGroup.getName());
         assertEquals(findMember.getNickname(), requestDto.getNickname());
     }
-
-    @Transactional
-    @Test
-    public void 그룹이름변경() throws Exception {
-        // given
-        String name = "group1";
-        String nickname = "Kim";
-        String password = "1234";
-        GroupMemberRequestDto groupMemberRequestDto = new GroupMemberRequestDto(name, nickname, password);
-        String saveLink = groupService.createGroup(groupMemberRequestDto);
-
-        String new_name = "group2";
-        Group group = groupRepository.findByLink(saveLink).get();
-        GroupRequestDto groupRequestDto = new GroupRequestDto(new_name, group.getLink(), group.getLeaderId());
-
-        // when
-        groupService.updateGroup(saveLink, groupRequestDto);
-
-        // then
-        assertEquals(group.getName(), new_name);
-    }
-
-    @Transactional
-    @Test
-    public void 그룹멤버추가() throws Exception {
-        // given
-        String name = "group1";
-        String nickname = "Kim";
-        String password = "1234";
-        GroupMemberRequestDto groupMemberRequestDto = new GroupMemberRequestDto(name, nickname, password);
-        String saveLink = groupService.createGroup(groupMemberRequestDto);
-
-        MemberRequestDto memberRequestDto = new MemberRequestDto("Han", "1111");
-        Member member = new Member(memberRequestDto);
-        memberRepository.save(member);
-
-        // when
-        groupService.addGroupMember(saveLink, member);
-
-        // then
-        Group group = groupRepository.findByLink(saveLink).get();
-        if(!group.getMembers().contains(member)) {
-            throw new Exception("그룹 멤버가 추가되지 않았습니다.");
-        };
-    }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class MemberRequestDto {
+    private String groupLink;
     private String nickname;
     private String password;
 }

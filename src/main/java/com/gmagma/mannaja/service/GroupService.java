@@ -23,18 +23,13 @@ public class GroupService {
     private final GroupRepository groupRepository;
     private final MemberRepository memberRepository;
 
-    // 모든 그룹 조회
-    public List<Group> getAllGroups() {
-        return groupRepository.findAll();
-    }
-
     // 신규 그룹 생성
     @Transactional
     public String createGroup(GroupMemberRequestDto requestDto) {
         // 그룹장 생성
         String nickname = requestDto.getNickname();
         String password = requestDto.getPassword();
-        MemberRequestDto memberRequestDto = new MemberRequestDto(nickname, password);
+        MemberRequestDto memberRequestDto = new MemberRequestDto("", nickname, password);
         Member member = new Member(memberRequestDto);
         memberRepository.save(member);
 
@@ -80,40 +75,14 @@ public class GroupService {
         return false;
     }
 
-    // 그룹 정보 변경
-    @Transactional
-    public String updateGroup(String link, GroupRequestDto requestDto) {
-        Group group = groupRepository.findByLink(link).orElseThrow(
-                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
-        );
-
-        group.update(requestDto);
-        return "0000";
-    }
-
-    // 그룹 멤버 추가
-    @Transactional
-    public String addGroupMember(String link, Member member) {
-        Group group = groupRepository.findByLink(link).orElseThrow(
-                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
-        );
-
-        group.addMember(member);
-        return "0000";
-    }
-
-    // 그룹 멤버 찾기
-    public List<String> findMembersByGroupLink(String link) {
-        Group group = groupRepository.findByLink(link).orElseThrow(
-                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
-        );
-
-        List<String> nicknames = new ArrayList<>();
-        List<Member> members = group.getMembers();
-        for (Member member: members) {
-            nicknames.add(member.getNickname());
-        }
-
-        return nicknames;
-    }
+//    // 그룹 멤버 추가
+//    @Transactional
+//    public String addGroupMember(String link, Member member) {
+//        Group group = groupRepository.findByLink(link).orElseThrow(
+//                () -> new NullPointerException("해당 그룹 링크가 존재하지 않습니다.")
+//        );
+//
+//        group.addMember(member);
+//        return "0000";
+//    }
 }
