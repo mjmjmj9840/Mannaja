@@ -1,7 +1,5 @@
 package com.gmagma.mannaja.model;
 
-import com.gmagma.mannaja.model.Group;
-import com.gmagma.mannaja.model.Member;
 import com.gmagma.mannaja.repository.GroupRepository;
 import com.gmagma.mannaja.repository.MemberRepository;
 import org.junit.Test;

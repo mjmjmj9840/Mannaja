@@ -1,8 +1,6 @@
 package com.gmagma.mannaja.service;
 
 import com.gmagma.mannaja.dto.GroupMemberRequestDto;
-import com.gmagma.mannaja.dto.GroupRequestDto;
-import com.gmagma.mannaja.dto.MemberRequestDto;
 import com.gmagma.mannaja.model.Group;
 import com.gmagma.mannaja.model.Member;
 import com.gmagma.mannaja.repository.GroupRepository;
