@@ -24,4 +24,10 @@ public class UserController {
         HashMap result = memberService.createMember(requestDto);
         return result;
     }
+
+    @PostMapping("/passwordCheck")
+    public HashMap login(@RequestBody MemberRequestDto requestDto) {
+        HashMap result = memberService.login(requestDto);
+        return result;
+    }
 }

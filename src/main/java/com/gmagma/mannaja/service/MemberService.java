@@ -66,4 +66,33 @@ public class MemberService {
         result.put("resultMessage", "성공");
         return result;
     }
+
+    public HashMap login(MemberRequestDto requestDto) {
+        HashMap result = new HashMap();
+
+        Optional<Group> group = groupRepository.findByLink(requestDto.getGroupLink());
+        if(!group.isPresent()) {
+            result.put("resultCode", "1000");
+            result.put("resultMessage", "해당 그룹 링크가 존재하지 않습니다.");
+            return result;
+        }
+
+        Optional<Member> member = memberRepository.findByGroupAndNickname(group.get(), requestDto.getNickname());
+        if(!member.isPresent()) {
+            result.put("resultCode", "2001");
+            result.put("resultMessage", "해당 닉네임이 존재하지 않습니다.");
+            return result;
+        }
+
+        String password = member.get().getPassword();
+        if(!password.equals(requestDto.getPassword())) {
+            result.put("resultCode", "2002");
+            result.put("resultMessage", "비밀번호가 일치하지 않습니다.");
+            return result;
+        }
+
+        result.put("resultCode", "0000");
+        result.put("resultMessage", "성공");
+        return result;
+    }
 }
