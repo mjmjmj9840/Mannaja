@@ -1,4 +1,121 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { Meeting, Notice } from "../components";
+import { getDateFormat } from "../utils/commonUtils";
+
+let meetings_data = [
+  {
+    id: 1,
+    date: "2021.08.29 11:00",
+    participants: ["닉네임1"],
+    place: "장소1",
+  },
+  {
+    id: 2,
+    date: "2021.08.29 11:30",
+    participants: ["닉네임2"],
+    place: "장소2",
+  },
+  {
+    id: 3,
+    date: "2021.08.30 12:00",
+    participants: ["닉네임3"],
+    place: "장소3",
+  },
+  {
+    id: 4,
+    date: "2021.08.31 12:30",
+    participants: ["닉네임4"],
+    place: "장소4",
+  },
+  {
+    id: 5,
+    date: "2021.09.01 13:00",
+    participants: ["닉네임5"],
+    place: "장소5",
+  },
+];
+
+let meetings = meetings_data.map((o, i) => {
+  let data = {
+    date: getDateFormat(o.date),
+    place: o.place,
+    participants: o.participants.join(", "), // ["A", "B"] -> "A, B"
+  };
+
+  return <Meeting key={o.id} data={data} />;
+});
+
+let notices_data = [
+  {
+    title: "얘들아 내일 늦으면",
+    content: "1분당 척추뼈 하나씩 뽑을거야",
+    writer: "일이삼사오육칠팔구십",
+  },
+  {
+    title: "공지1",
+    content: "공지 내용1",
+    writer: "닉네임1",
+  },
+  {
+    title: "공지2",
+    content: "공지 내용2",
+    writer: "닉네임2",
+  },
+  {
+    title: "공지3",
+    content: "공지 내용3",
+    writer: "닉네임3",
+  },
+  {
+    title: "공지4",
+    content: "공지 내용4",
+    writer: "닉네임4",
+  },
+  {
+    title: "공지5",
+    content: "공지 내용5",
+    writer: "닉네임5",
+  },
+];
+
+let notices = notices_data.map((o, i) => {
+  return <Notice key={i} data={o} />;
+});
+
+let members_data = [
+  "그룹장닉네임",
+  "일이삼사오육칠팔구십",
+  "닉네임1",
+  "닉네임2",
+  "닉네임3",
+  "닉네임4",
+  "닉네임5",
+];
+
+let leader = "그룹장닉네임";
+
+let members = members_data.map((o, i) => {
+  let className = "";
+  let leaderImg;
+
+  if (o === "일이삼사오육칠팔구십") {
+    // TODO : 세션에 저장된 접속자 정보와 비교
+    className += "text_bold";
+  }
+
+  if (o === leader) {
+    className += " group_leader";
+    leaderImg = <img src="/images/leader_crown.png" alt="그룹장 표시" />;
+  }
+
+  return (
+    <p className={className} key={i}>
+      {o}
+      {leaderImg}
+    </p>
+  );
+});
 
 const Main = () => {
   return (
@@ -12,24 +129,7 @@ const Main = () => {
             일이삼사오육칠팔구십
           </div>
           <div id="member_wrap" className="text_15px">
-            {/* <그룹원> 으로 표기하면 그룹원 태그로 인식됨 */}
-            <p className="group_leader">
-              그룹장닉네임
-              <img src="/images/leader_crown.png" alt="그룹장 표시" />
-            </p>
-            <p className="text_bold">일이삼사오육칠팔구십</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
-            <p>닉네임</p>
+            {members}
           </div>
         </div>
         <div>
@@ -43,48 +143,7 @@ const Main = () => {
             {/* 게시글이 없을 경우
             <p className="text_boldM">게시글이 없습니다.</p>
             */}
-            <div className="notice">
-              <p className="text_bold">
-                일이삼사오육칠팔구십
-                <br />
-                <span> 2021.08.19 00:00:00 </span>
-              </p>
-              <p>
-                일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십
-              </p>
-            </div>
-            <div className="notice">
-              <p className="text_bold">
-                닉네임
-                <br />
-                <span> yyyy.mm.dd hh:mi:ss </span>
-              </p>
-              <p>공지 제목</p>
-            </div>
-            <div className="notice">
-              <p className="text_bold">
-                닉네임
-                <br />
-                <span> yyyy.mm.dd hh:mi:ss </span>
-              </p>
-              <p>공지 제목</p>
-            </div>
-            <div className="notice">
-              <p className="text_bold">
-                닉네임
-                <br />
-                <span> yyyy.mm.dd hh:mi:ss </span>
-              </p>
-              <p>공지 제목</p>
-            </div>
-            <div className="notice">
-              <p className="text_bold">
-                닉네임
-                <br />
-                <span> yyyy.mm.dd hh:mi:ss </span>
-              </p>
-              <p>공지 제목</p>
-            </div>
+            {notices}
           </div>
         </div>
       </div>
@@ -102,51 +161,12 @@ const Main = () => {
           <p className="text_boldM">생성된 일정이 없습니다.</p>
           */}
             <div className="meeting">
-              <p className="text_20px text_bold">&lt; 다음일정 &gt;</p>
-              <p>2021년 8월 19일 목요일 오후 11시 37분</p>
-              <p>장소 : 범계역</p>
-              <p className="text_ellipsis">
-                참여자 : 그룹장닉네임, 일이삼사오육칠팔구십, 닉네임, 닉네임,
-                닉네임, 닉네임, 닉네임, 닉네임, 닉네임, 닉네임, 닉네임, 닉네임,
-                닉네임, 닉네임, 닉네임, 닉네임, 닉네임
-              </p>
-            </div>
-            <div className="meeting">
               <p className="text_20px text_bold">&lt; 약속잡기 &gt;</p>
               <p>
-                일이삼사오육칠팔구십 님의 약속 (기간 : yyyy.mm.dd ~ yyyy.mm.dd)
+                일이삼사오육칠팔구십 님의 약속 (기간 : 2021.mm.dd ~ 2021.mm.dd)
               </p>
             </div>
-            <div className="meeting">
-              <p className="text_20px text_bold">&lt; 다음일정 &gt;</p>
-              <p>yyyy년 mm월 dd일 E요일 오전 hh시 mm분</p>
-              <p>장소 : place</p>
-              <p className="text_ellipsis">참여자 : 닉네임</p>
-            </div>
-            <div className="meeting">
-              <p className="text_20px text_bold">&lt; 다음일정 &gt;</p>
-              <p>yyyy년 mm월 dd일 E요일 오전 hh시 mm분</p>
-              <p>장소 : place</p>
-              <p className="text_ellipsis">참여자 : 닉네임</p>
-            </div>
-            <div className="meeting">
-              <p className="text_20px text_bold">&lt; 다음일정 &gt;</p>
-              <p>yyyy년 mm월 dd일 E요일 오전 hh시 mm분</p>
-              <p>장소 : place</p>
-              <p className="text_ellipsis">참여자 : 닉네임</p>
-            </div>
-            <div className="meeting">
-              <p className="text_20px text_bold">&lt; 다음일정 &gt;</p>
-              <p>yyyy년 mm월 dd일 E요일 오전 hh시 mm분</p>
-              <p>장소 : place</p>
-              <p className="text_ellipsis">참여자 : 닉네임</p>
-            </div>
-            <div className="meeting">
-              <p className="text_20px text_bold">&lt; 다음일정 &gt;</p>
-              <p>yyyy년 mm월 dd일 E요일 오전 hh시 mm분</p>
-              <p>장소 : place</p>
-              <p className="text_ellipsis">참여자 : 닉네임</p>
-            </div>
+            {meetings}
           </div>
         </div>
       </div>

@@ -242,7 +242,7 @@ img {
 #group_main_wrap #member_notice_wrap > div {
   width: 70%;
   height: 45%;
-  border: 2px solid #ffffff;
+  border: 3px solid #ffffff;
   position: relative;
 }
 
@@ -283,7 +283,7 @@ img {
 }
 
 #group_main_wrap .notice {
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   width: 80%;
   height: auto;
   padding: 5px;
@@ -310,7 +310,7 @@ img {
 #group_main_wrap #meeting_wrap {
   width: 90%;
   height: 95%;
-  border: 2px solid #ffffff;
+  border: 3px solid #ffffff;
   margin-left: 5%;
   position: relative;
 }
@@ -327,7 +327,7 @@ img {
 }
 
 #group_main_wrap .meeting {
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   width: 95%;
   height: auto;
   padding: 5px;
