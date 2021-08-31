@@ -133,6 +133,10 @@ img {
   color: #444444;
 }
 
+.text_red {
+  color: #ed1c24;
+}
+
 .text_bold {
   font-family: "ELAND_Choice_B";
 }
@@ -153,6 +157,10 @@ img {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.display_none {
+  display: none;
 }
 
 #profile_text {
@@ -183,6 +191,7 @@ img {
 
 #created_link_wrap .icon_wrap {
   padding: 0 10px;
+  margin: 5px 0;
 }
 
 #created_link_wrap .icon_wrap,
@@ -326,7 +335,8 @@ img {
   text-align: center;
 }
 
-#group_main_wrap .meeting {
+#group_main_wrap .meeting,
+#group_main_wrap .votes {
   border: 2px solid #ffffff;
   width: 95%;
   height: auto;
@@ -335,14 +345,22 @@ img {
 }
 
 #group_main_wrap .meeting,
-#group_main_wrap .meeting > * {
+#group_main_wrap .meeting > *,
+#group_main_wrap .votes span {
   cursor: pointer;
 }
 
-#group_main_wrap .meeting:hover {
+#group_main_wrap .meeting:hover,
+#group_main_wrap .votes span:hover {
   color: #ffffff;
 }
 
-#group_main_wrap .meeting > p {
+#group_main_wrap .meeting > p,
+#group_main_wrap .votes > p {
   padding: 5px;
+}
+
+#group_main_wrap .votes .vote_confirm,
+#group_main_wrap .votes .vote_delete {
+  margin-left: 15px;
 }

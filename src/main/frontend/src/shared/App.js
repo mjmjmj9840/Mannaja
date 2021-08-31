@@ -15,17 +15,13 @@ const App = () => {
       <Route path="/TestCreate" component={TestCreate} />
       <Route path="/createLink" component={CreateLink} />
       <Route path="/createdLink" component={CreatedLink} />
-      <Route path="/:group_link/user/login" component={SelectProfile} />
-      <Route path="/:group_link/user/signup" component={CreateProfile} />
-      <Route path="/:group_link/main" component={Main} />
-
       {/* Switch : component의 중복 출력 방지 */}
-      {/*
-        <Switch>
-          <Route path="/:group_link/user/login" component={SelectProfile} />
-          <Route path="/user/login" component={SelectProfile} />
-        </Switch>
-        */}
+      <Switch>
+        <Route path="/:groupLink/" component={SelectProfile} />
+        <Route path="/:groupLink/user/login" component={SelectProfile} />
+      </Switch>
+      <Route path="/:groupLink/user/signup" component={CreateProfile} />
+      <Route path="/:groupLink/main" component={Main} />
       {/* Redirect : Redirect 할 path */}
       {/* <Redirect from='/' to='/' /> */}
     </>

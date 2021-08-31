@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Meeting, Notice } from "../components";
+import { Meeting, Vote, Notice } from "../components";
 import { getDateFormat } from "../utils/commonUtils";
 
 let meetings_data = [
@@ -44,6 +44,54 @@ let meetings = meetings_data.map((o, i) => {
   };
 
   return <Meeting key={o.id} data={data} />;
+});
+
+let votes_data = [
+  {
+    meetingId: 1,
+    startDate: "2021.08.30 00:00",
+    endDate: "2021.09.30 23:59",
+    votingEndDate: "2021.09.30 23:59",
+    writer: "일이삼사오육칠팔구십",
+    voter: ["일이삼사오육칠팔구십"],
+  },
+  {
+    meetingId: 2,
+    startDate: "2021.08.30 00:00",
+    endDate: "2021.09.30 23:59",
+    votingEndDate: "2021.09.30 23:59",
+    writer: "닉네임1",
+    voter: ["닉네임1"],
+  },
+  {
+    meetingId: 3,
+    startDate: "2021.08.21 00:00",
+    endDate: "2021.08.25 23:59",
+    votingEndDate: "2021.08.25 23:59",
+    writer: "닉네임2",
+    voter: ["닉네임2"],
+  },
+  {
+    meetingId: 4,
+    startDate: "2021.08.21 00:00",
+    endDate: "2021.08.25 23:59",
+    votingEndDate: "2021.08.25 23:59",
+    writer: "닉네임3",
+    voter: ["닉네임3"],
+  },
+];
+
+let votes = votes_data.map((o, i) => {
+  let data = {
+    meetingId: o.meetingId,
+    startDate: o.startDate.substr(0, 10), // yyyy.mm.dd
+    endDate: o.endDate.substr(0, 10), // yyyy.mm.dd
+    writer: o.writer,
+    isWriter: o.writer === "일이삼사오육칠팔구십" ? true : false, // 약속 생성자 여부
+    // TODO : 세션에 저장된 접속자 정보와 비교
+  };
+
+  return <Vote key={o.meetingId} data={data} />;
 });
 
 let notices_data = [
@@ -160,11 +208,9 @@ const Main = () => {
           일정이 없을 경우
           <p className="text_boldM">생성된 일정이 없습니다.</p>
           */}
-            <div className="meeting">
+            <div className="votes">
               <p className="text_20px text_bold">&lt; 약속잡기 &gt;</p>
-              <p>
-                일이삼사오육칠팔구십 님의 약속 (기간 : 2021.mm.dd ~ 2021.mm.dd)
-              </p>
+              {votes}
             </div>
             {meetings}
           </div>

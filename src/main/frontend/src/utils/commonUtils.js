@@ -1,3 +1,6 @@
+export const regexEngKorNum = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]+$/; // 영어 + 한글 + 숫자 정규식
+export const regexNum = /^[0-9|]+$/; // 숫자 정규식
+
 /**
  * Convert date format (yyyy.mm.dd hh:mm -> yyyy년 mm월 dd일 오전/오후 hh시 mm분)
  * @param {String} date (yyyy.mm.dd hh:mm)
